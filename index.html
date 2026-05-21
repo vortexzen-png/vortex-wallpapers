@@ -1,88 +1,137 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Vortex Wallpapers</title>
-<style>
-body{
-margin:0;
-font-family: 'Montserrat', sans-serif;
-background:#0a0a0f;
-color:white;
-}
+  <title>Vortex Wallpapers</title>
 
-h1{
-text-align:center;
-padding:20px;
-}
+  <!-- Stylish Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
 
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:10px;
-padding:10px;
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: radial-gradient(circle at top, #1a1a1a, #000000);
+      color: white;
+    }
 
-.gallery img{
-width:100%;
-height:250px;
-object-fit:cover;
-border-radius:10px;
-}
-</style>
+    h1 {
+      text-align: center;
+      padding: 25px;
+      font-size: 32px;
+      letter-spacing: 2px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      padding: 15px;
+    }
+
+    .item {
+      text-align: center;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 5px 20px rgba(255,255,255,0.1);
+    }
+
+    .gallery img:hover {
+      transform: scale(1.07);
+      box-shadow: 0 8px 25px rgba(255,255,255,0.3);
+    }
+
+    button {
+      margin-top: 8px;
+      padding: 7px 14px;
+      border: none;
+      border-radius: 6px;
+      background: white;
+      color: black;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #ffcc00;
+      color: black;
+    }
+  </style>
 </head>
 
-<`body>
+<body>
 
 <h1>Vortex Wallpapers</h1>
 
 <div class="gallery">
 
-<div class="wallpaper">
-  <img src="wallpapers/1.jpg">
+  <!-- Wallpaper 1 -->
+  <div class="item">
+    <a href="wallpapers/1.jpg" target="_blank">
+      <img src="wallpapers/1.jpg">
+    </a>
+    <a href="wallpapers/1.jpg" download>
+      <button>Download</button>
+    </a>
+  </div>
 
-  <a href="wallpapers/1.jpg" download>
-    <button>Download</button>
-  </a>
-</div>
-<div class="wallpaper">
-  <img src="wallpapers/2.jpg">
+  <!-- Wallpaper 2 -->
+  <div class="item">
+    <a href="wallpapers/2.jpg" target="_blank">
+      <img src="wallpapers/2.jpg">
+    </a>
+    <a href="wallpapers/2.jpg" download>
+      <button>Download</button>
+    </a>
+  </div>
 
-  <a href="wallpapers/2.jpg" download>
-    <button>Download</button>
-  </a>
-</div>
-<div class="wallpaper">
-  <img src="wallpapers/3.jpg">
+  <!-- Wallpaper 3 -->
+  <div class="item">
+    <a href="wallpapers/3.jpg" target="_blank">
+      <img src="wallpapers/3.jpg">
+    </a>
+    <a href="wallpapers/3.jpg" download>
+      <button>Download</button>
+    </a>
+  </div>
 
-  <a href="wallpapers/3.jpg" download>
-    <button>Download</button>
-  </a>
-</div>
-<div class="wallpaper">
-  <img src="wallpapers/4.jpg">
+  <!-- Wallpaper 4 -->
+  <div class="item">
+    <a href="wallpapers/4.jpg" target="_blank">
+      <img src="wallpapers/4.jpg">
+    </a>
+    <a href="wallpapers/4.jpg" download>
+      <button>Download</button>
+    </a>
+  </div>
 
-  <a href="wallpapers/4.jpg" download>
-    <button>Download</button>
-  </a>
-</div>
-<div class="item">
-  <a href="wallpapers/5.jpg" download>
-    <img src="wallpapers/5.jpg">
-  </a>
-  <a href="wallpapers/5.jpg" download>
-    <button>Download</button>
-  </a>
-</div>
-<div class="item">
-  <a href="wallpapers/6.jpg" download>
-    <img src="wallpapers/6.jpg">
-  </a>
-  <a href="wallpapers/6.jpg" download>
-    <button>Download</button>
-  </a>
-</div>
+  <!-- Wallpaper 5 -->
+  <div class="item">
+    <a href="wallpapers/5.jpg" target="_blank">
+      <img src="wallpapers/5.jpg">
+    </a>
+    <a href="wallpapers/5.jpg" download>
+      <button>Download</button>
+    </a>
+  </div>
+
+  <!-- Wallpaper 6 -->
+  <div class="item">
+    <a href="wallpapers/6.jpg" target="_blank">
+      <img src="wallpapers/6.jpg">
+    </a>
+    <a href="wallpapers/6.jpg" download>
+      <button>Download</button>
+    </a>
+  </div>
 
 </div>
 
 </body>
+
 </html>
