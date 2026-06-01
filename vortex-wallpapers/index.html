@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vortex Wallpapers</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0b0b0f;
+  color: white;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  padding: 20px;
+}
+
+.logo {
+  width: 80px;
+  border-radius: 12px;
+}
+
+.tagline {
+  color: #aaa;
+  font-size: 13px;
+}
+
+/* CATEGORY BUTTONS */
+.categories {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.cat {
+  background: #1a1a25;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.cat:hover {
+  background: purple;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  padding: 15px;
+}
+
+/* CARD */
+.card {
+  background: #15151c;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+}
+
+.btn {
+  background: purple;
+  color: white;
+  text-decoration: none;
+  padding: 5px 8px;
+  font-size: 12px;
+  border-radius: 6px;
+}
+
+/* HIDE */
+.hide {
+  display: none;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <img src="logo.jpg" class="logo">
+  <h2>VORTEX WALLPAPERS</h2>
+  <p class="tagline">Elevate Your Screen</p>
+</div>
+
+<!-- CATEGORIES -->
+<div class="categories">
+  <div class="cat" onclick="filter('all')">All</div>
+  <div class="cat" onclick="filter('anime')">Anime</div>
+  <div class="cat" onclick="filter('sports')">Sports</div>
+  <div class="cat" onclick="filter('space')">Space</div>
+</div>
+
+<!-- GRID -->
+<div class="grid">
+
+<!-- ================= ANIME (15) ================= -->
+
+<div class="card anime"><img src="anime_01.jpg"><div class="btns"><a class="btn" href="anime_01.jpg" target="_blank">View</a><a class="btn" href="anime_01.jpg" download>Download</a></div></div>
+<div class="card anime"><img src="anime_02.jpg"><div class="btns"><a class="btn" href="anime_02.jpg" target="_blank">View</a><a class="btn" href="anime_02.jpg" download>Download</a></div></div>
+<div class="card anime"><img src="anime_03.jpg"><div class="btns"><a class="btn" href="anime_03.jpg" target="_blank">View</a><a class="btn" href="anime_03.jpg" download>Download</a></div></div>
+<div class="card anime"><img src="anime_04.jpg"><div class="btns"><a class="btn" href="anime_04.jpg" target="_blank">View</a><a class="btn" href="anime_04.jpg" download>Download</a></div></div>
+<div class="card anime"><img src="anime_05.jpg"><div class="btns"><a class="btn" href="anime_05.jpg" target="_blank">View</a><a class="btn" href="anime_05.jpg" download>Download</a></div></div>
+<div class="card anime"><img src="anime_06.jpg"><div class="btns"><a class="btn" href="anime_06.jpg" target="_blank">View</a><a class="btn" href="anime_06.jpg" download>Download</a></div></div>
+<div class="card anime"><img src="anime_07.jpg"><div class="btns"><a class="btn" href="anime_07.jpg" target="_blank">View</a><a class="btn" href="anime_07.jpg" download>Download</a></div></div>
+<div class="card anime"><img src="anime_08.jpg"><div class="btns"><a class="btn" href="anime_08.jpg" target="_blank">View</a><a class="btn" href="anime_08.jpg" download>Download</a></div></div>
+<div class="card anime"><img src="anime_09.jpg"><div class="btns"><a class="btn" href="anime_09.jpg" target="_blank">View</a><a class="btn" href="anime_09.jpg" download>Download</a></div></div>
+<div class="card anime"><img src="anime_10.jpg"><div class="btns"><a class="btn" href="anime_10.jpg" target="_blank">View</a><a class="btn" href="anime_10.jpg" download>Download</a></div></div>
+<div class="card anime"><img src="anime_11.jpg"><div class="btns"><a class="btn" href="anime_11.jpg" target="_blank">View</a><a class="btn" href="anime_11.jpg" download>Download</a></div></div>
+<div class="card anime"><img src="anime_12.jpg"><div class="btns"><a class="btn" href="anime_12.jpg" target="_blank">View</a><a class="btn" href="anime_12.jpg" download>Download</a></div></div>
+<div class="card anime"><img src="anime_13.jpg"><div class="btns"><a class="btn" href="anime_13.jpg" target="_blank">View</a><a class="btn" href="anime_13.jpg" download>Download</a></div></div>
+<div class="card anime"><img src="anime_14.jpg"><div class="btns"><a class="btn" href="anime_14.jpg" target="_blank">View</a><a class="btn" href="anime_14.jpg" download>Download</a></div></div>
+<div class="card anime"><img src="anime_15.jpg"><div class="btns"><a class="btn" href="anime_15.jpg" target="_blank">View</a><a class="btn" href="anime_15.jpg" download>Download</a></div></div>
+
+<!-- ================= SPORTS (3) ================= -->
+
+<div class="card sports"><img src="sports_01.jpg"><div class="btns"><a class="btn" href="sports_01.jpg" target="_blank">View</a><a class="btn" href="sports_01.jpg" download>Download</a></div></div>
+<div class="card sports"><img src="sports_02.jpg"><div class="btns"><a class="btn" href="sports_02.jpg" target="_blank">View</a><a class="btn" href="sports_02.jpg" download>Download</a></div></div>
+<div class="card sports"><img src="sports_03.jpg"><div class="btns"><a class="btn" href="sports_03.jpg" target="_blank">View</a><a class="btn" href="sports_03.jpg" download>Download</a></div></div>
+
+<!-- ================= SPACE (2) ================= -->
+
+<div class="card space"><img src="space_01.jpg"><div class="btns"><a class="btn" href="space_01.jpg" target="_blank">View</a><a class="btn" href="space_01.jpg" download>Download</a></div></div>
+<div class="card space"><img src="space_02.jpg"><div class="btns"><a class="btn" href="space_02.jpg" target="_blank">View</a><a class="btn" href="space_02.jpg" download>Download</a></div></div>
+
+</div>
+
+
+<!-- SCRIPT -->
+<script>
+function filterCategory(category) {
+    let items = document.getElementsByClassName("card");
+
+    for (let i = 0; i < items.length; i++) {
+
+        if (category === "all") {
+            items[i].style.display = "block";
+        } 
+        else if (items[i].classList.contains(category)) {
+            items[i].style.display = "block";
+        } 
+        else {
+            items[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+</body>
+</html>
