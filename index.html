@@ -1,201 +1,183 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vortex Wallpapers</title><style>
+<title>Vortex Wallpapers</title>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+<style>
+
+/* ===== BACKGROUND ===== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
 }
 
-body{
-min-height:100vh;
-padding:20px;
-background:
-linear-gradient(-45deg,#00c6ff,#0072ff,#7f5af0,#00f5d4,#4facfe);
-background-size:400% 400%;
-animation:gradientBG 14s ease infinite;
+/* ===== HEADER ===== */
+.header {
+  text-align: center;
+  padding: 20px;
+}
+.header h1:first-child {
+  font-size: 32px;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-shadow: 
+    0 0 5px #00c6ff,
+    0 0 10px #00c6ff,
+    0 0 20px rgba(0, 198, 255, 0.6);
 }
 
-@keyframes gradientBG{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+.header h1:last-child {
+  font-size: 16px;
+  font-weight: normal;
+  color: #ccefff;
+  opacity: 0.9;
+}
+/* ===== BUTTONS ===== */
+.buttons {
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-.header{
-text-align:center;
-margin-bottom:30px;
+button {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
-.header h1{
-font-size:52px;
-font-weight:bold;
-letter-spacing:2px;
-background:linear-gradient(to right,#ffffff,#c6f6ff,#ffffff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-text-shadow:0 0 25px rgba(255,255,255,0.35);
-margin-bottom:8px;
+/* ===== GALLERY ===== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  padding: 15px;
 }
 
-.header p{
-color:white;
-font-size:18px;
-font-weight:bold;
-opacity:0.95;
+/* ===== CARD ===== */
+.card {
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
 }
 
-.category-buttons{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:12px;
-margin-bottom:35px;
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  cursor: pointer;
 }
 
-.category-buttons button{
-border:none;
-padding:12px 24px;
-border-radius:40px;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-background:rgba(255,255,255,0.18);
-backdrop-filter:blur(12px);
-color:white;
-transition:0.3s;
+/* ===== DOWNLOAD ===== */
+.download {
+  display: block;
+  padding: 10px;
+  background: #00c6ff;
+  color: white;
+  text-decoration: none;
 }
 
-.category-buttons button:hover{
-transform:translateY(-2px) scale(1.04);
-background:rgba(255,255,255,0.28);
+/* ===== MOBILE ONLY CHANGE ===== */
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .card img {
+    height: 200px;
+  }
 }
 
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:22px;
-}
+</style>
+</head>
 
-.card{
-background:rgba(255,255,255,0.15);
-backdrop-filter:blur(12px);
-padding:12px;
-border-radius:22px;
-box-shadow:0 10px 30px rgba(0,0,0,0.20);
-transition:0.3s;
-}
+<body>
 
-.card:hover{
-transform:translateY(-8px);
-}
-
-.card img{
-width:100%;
-height:340px;
-object-fit:cover;
-border-radius:18px;
-cursor:pointer;
-}
-
-.download-btn{
-display:block;
-margin-top:12px;
-text-align:center;
-padding:12px;
-border-radius:14px;
-text-decoration:none;
-font-weight:bold;
-color:white;
-background:linear-gradient(to right,#00c6ff,#0072ff);
-transition:0.3s;
-}
-
-.download-btn:hover{
-transform:scale(1.03);
-}
-
-</style></head><body><div class="header">
-<h1>Vortex Wallpapers</h1>
-<p>Anime • Sports • Space • Cars</p>
-</div><div class="category-buttons">
-<button onclick="filterCategory('all')">All</button>
-<button onclick="filterCategory('anime')">Anime</button>
-<button onclick="filterCategory('sports')">Sports</button>
-<button onclick="filterCategory('space')">Space</button>
-<button onclick="filterCategory('cars')">Cars</button>
-</div><div class="gallery" id="gallery"></div><script>
-
-const wallpapers = [
-
-/* Anime 15 */
-...Array.from({length:18}, (_,i)=>({
-file:`anime_${String(i+1).padStart(2,'0')}.jpg`,
-category:'anime'
-})),
-
-/* Sports 3 */
-...Array.from({length:4}, (_,i)=>({
-file:`sports_${String(i+1).padStart(2,'0')}.jpg`,
-category:'sports'
-})),
-
-/* Space 2 */
-...Array.from({length:5}, (_,i)=>({
-file:`space_${String(i+1).padStart(2,'0')}.jpg`,
-category:'space'
-})),
-
-/* Cars 3 */
-...Array.from({length:3}, (_,i)=>({
-file:`cars_${String(i+1).padStart(2,'0')}.jpg`,
-category:'cars'
-}))
-
-];
-
-const gallery = document.getElementById("gallery");
-
-function renderGallery(category="all"){
-
-gallery.innerHTML="";
-
-wallpapers.forEach(item=>{
-
-if(category==="all" || item.category===category){
-
-gallery.innerHTML += `
-
-<div class="card">
-
-<img src="${item.file}"
-onclick="window.open('${item.file}','_blank')">
-
-<a class="download-btn"
-href="${item.file}"
-download>
-Download
-</a>
-
+<div class="header">
+  <h1>Vortex Wallpapers</h1>
 </div>
 
-`;
+<div class="buttons">
+  <button onclick="filter('all')">All</button>
+  <button onclick="filter('anime')">Anime</button>
+  <button onclick="filter('sports')">Sports</button>
+  <button onclick="filter('cosmic')">Cosmic</button>
+  <button onclick="filter('cars')">Cars</button>
+</div>
 
+<div class="gallery" id="gallery"></div>
+
+<script>
+
+/* ===== AUTO GENERATION SYSTEM ===== */
+
+let categories = {
+  anime: 21,
+  sports: 7,
+  cosmic: 5,
+  cars: 6
+};
+
+function generateList() {
+  let data = [];
+
+  Object.keys(categories).forEach(cat => {
+    let count = categories[cat];
+
+    data.push(
+      ...Array.from({length: count}, (_, i) => ({
+        file: `${cat}_${String(i+1).padStart(2,'0')}.jpg`,
+        category: cat
+      }))
+    );
+  });
+
+  return data;
 }
 
-});
+let wallpapers = generateList();
 
+/* ===== RENDER ===== */
+
+function load(category="all") {
+  let gallery = document.getElementById("gallery");
+  gallery.innerHTML = "";
+
+  wallpapers
+  .filter(w => category === "all" || w.category === category)
+  .forEach(w => {
+
+    gallery.innerHTML += `
+      <div class="card">
+        <img src="${w.file}" onclick="openImg('${w.file}')">
+        <a class="download" href="${w.file}" download>Download</a>
+      </div>
+    `;
+  });
 }
 
-function filterCategory(category){
-renderGallery(category);
+/* ===== FILTER ===== */
+
+function filter(cat) {
+  load(cat);
 }
 
-renderGallery();
+/* ===== OPEN IMAGE ===== */
 
-</script></body>
+function openImg(file) {
+  window.open(file, "_blank");
+}
+
+load();
+
+</script>
+
+</body>
 </html>
