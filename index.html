@@ -3,12 +3,10 @@
 
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><button onclick="prevImage()" style="padding:12px 22px;border:none;border-radius:14px;background:linear-gradient(135deg,#7b2cff,#00c6ff);color:white;font-weight:600;box-shadow:0 0 12px rgba(0,198,255,.5);cursor:pointer;">⬅ Prev</button>
 <title>Vortex Wallpapers</title>
 
 <style>
-
-/* ===== BACKGROUND ===== */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -123,10 +121,10 @@ button {
 /* ===== AUTO GENERATION SYSTEM ===== */
 
 let categories = {
-  anime: 21,
-  sports: 7,
+  anime: 23,
+  sports: 13,
   cosmic: 5,
-  cars: 6
+  cars: 7
 };
 
 function generateList() {
@@ -175,13 +173,59 @@ function filter(cat) {
 
 /* ===== OPEN IMAGE ===== */
 
+let currentIndex = 0;
+
 function openImg(file) {
-  window.open(file, "_blank");
+  currentIndex = wallpapers.findIndex(w => w.file === file);
+
+  document.getElementById("viewer").style.display = "flex";
+  document.getElementById("viewerImg").src = file;
+  document.getElementById("downloadBtn").href = file;
+}
+
+function closeViewer() {
+  document.getElementById("viewer").style.display = "none";
+}
+
+function nextImage() {
+  currentIndex = (currentIndex + 1) % wallpapers.length;
+
+  let file = wallpapers[currentIndex].file;
+
+  document.getElementById("viewerImg").src = file;
+  document.getElementById("downloadBtn").href = file;
+}
+
+function prevImage() {
+  currentIndex =
+    (currentIndex - 1 + wallpapers.length) %
+    wallpapers.length;
+
+  let file = wallpapers[currentIndex].file;
+
+  document.getElementById("viewerImg").src = file;
+  document.getElementById("downloadBtn").href = file;
 }
 
 load();
 
 </script>
+<div id="viewer" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:9999;justify-content:center;align-items:center;flex-direction:column;">
 
+  <button onclick="closeViewer()" style="position:absolute;top:20px;right:20px;padding:10px 15px;border:none;border-radius:10px;background:red;color:white;font-size:18px;">✕</button>
+
+  <img id="viewerImg" src="" style="max-width:90%;max-height:75%;border-radius:15px;">
+
+  <div style="margin-top:20px;display:flex;gap:10px;">
+  
+<button onclick="prevImage()" style="padding:12px 22px;border:none;border-radius:14px;background:linear-gradient(135deg,#7b2cff,#00c6ff);color:white;font-weight:600;box-shadow:0 0 12px rgba(0,198,255,.5);cursor:pointer;">Prev ←</button>
+
+    <a id="downloadBtn" href="" download style="padding:12px 22px;border-radius:14px;background:linear-gradient(135deg,#7b2cff,#00c6ff);color:white;text-decoration:none;font-weight:600;box-shadow:0 0 12px rgba(0,198,255,.5);">Download ▼</a>
+
+    <button onclick="nextImage()" style="padding:12px 22px;border:none;border-radius:14px;background:linear-gradient(135deg,#7b2cff,#00c6ff);color:white;font-weight:600;box-shadow:0 0 12px rgba(0,198,255,.5);cursor:pointer;">Next ➡</button>
+
+  </div>
+</div>
 </body>
+
 </html>
