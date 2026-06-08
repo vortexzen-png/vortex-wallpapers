@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><button onclick="prevImage()" style="padding:12px 22px;border:none;border-radius:14px;background:linear-gradient(135deg,#7b2cff,#00c6ff);color:white;font-weight:600;box-shadow:0 0 12px rgba(0,198,255,.5);cursor:pointer;">⬅ Prev</button>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vortex Wallpapers</title>
 
 <style>
@@ -13,8 +13,6 @@ body {
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   color: white;
 }
-
-/* ===== HEADER ===== */
 .header {
   text-align: center;
   padding: 20px;
@@ -28,19 +26,16 @@ body {
     0 0 10px #00c6ff,
     0 0 20px rgba(0, 198, 255, 0.6);
 }
-
 .header h1:last-child {
   font-size: 16px;
   font-weight: normal;
   color: #ccefff;
   opacity: 0.9;
 }
-/* ===== BUTTONS ===== */
 .buttons {
   text-align: center;
   margin-bottom: 10px;
 }
-
 button {
   padding: 10px 15px;
   margin: 5px;
@@ -48,31 +43,25 @@ button {
   border-radius: 20px;
   cursor: pointer;
 }
-
-/* ===== GALLERY ===== */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 15px;
   padding: 15px;
 }
-
-/* ===== CARD ===== */
 .card {
   background: rgba(255,255,255,0.1);
   border-radius: 15px;
   overflow: hidden;
   text-align: center;
+  position: relative;
 }
-
 .card img {
   width: 100%;
   height: 250px;
   object-fit: cover;
   cursor: pointer;
 }
-
-/* ===== DOWNLOAD ===== */
 .download {
   display: block;
   padding: 10px;
@@ -80,19 +69,59 @@ button {
   color: white;
   text-decoration: none;
 }
-
-/* ===== MOBILE ONLY CHANGE ===== */
 @media (max-width: 600px) {
   .gallery {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
-
   .card img {
     height: 200px;
   }
 }
-
+.fav-card img {
+  object-fit: contain;
+  height: auto;
+  max-height: 400px;
+}
+.watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%) rotate(-25deg);
+  font-size: 22px;
+  font-weight: bold;
+  color: rgba(255,255,255,0.35);
+  pointer-events: none;
+  text-align: center;
+  width: 100%;
+}
+.premium-img {
+  -webkit-touch-callout: none;
+}
+#pagination {
+  text-align: center;
+  padding: 20px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.page-btn {
+  padding: 8px 14px;
+  border: 2px solid #00c6ff;
+  border-radius: 10px;
+  background: #0f2027;
+  color: #00c6ff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.page-btn.active-page {
+  background: linear-gradient(135deg, #7b2cff, #00c6ff);
+  color: white;
+  box-shadow: 0 0 10px rgba(0,198,255,0.5);
+}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
@@ -101,12 +130,14 @@ button {
 
 <div class="header">
   <div style="display:flex;align-items:center;justify-content:center;gap:12px;">
-  <img src="logo.png" alt="Logo" style="width:60px;height:60px;border-radius:12px;">
- <h1 style="font-size:2rem;margin:0;font-family:'Orbitron',sans-serif;font-weight:500;letter-spacing:2px;color:#dbe7ff;">Vortex Wallpapers</h1>
-</div>
+    <img src="logo.png" alt="Logo" style="width:60px;height:60px;border-radius:12px;">
+    <h1 style="font-size:2rem;margin:0;font-family:'Orbitron',sans-serif;font-weight:500;letter-spacing:2px;color:#dbe7ff;">Vortex Wallpapers</h1>
+  </div>
 </div>
 
 <div class="buttons">
+  <button onclick="showFavorites()">❤️</button>
+  <button onclick="showPremium()">Premium</button>
   <button onclick="filter('all')">All</button>
   <button onclick="filter('anime')">Anime</button>
   <button onclick="filter('sports')">Sports</button>
@@ -115,72 +146,111 @@ button {
 </div>
 
 <div class="gallery" id="gallery"></div>
+<div id="pagination"></div>
 
 <script>
 
-/* ===== AUTO GENERATION SYSTEM ===== */
+var categories = { anime: 50, sports: 14, cosmic: 7, cars: 8 };
+var currentPage = 1;
+var perPage = 20;
+var currentCat = "all";
 
-let categories = {
-  anime: 31,
-  sports: 14,
-  cosmic: 7,
-  cars: 8
-};
+var wallpapers = [];
+Object.keys(categories).forEach(function(cat) {
+  var count = categories[cat];
+  for (var i = 1; i <= count; i++) {
+    wallpapers.push({
+      file: cat + "_" + (i < 10 ? "0" + i : i) + ".jpg",
+      category: cat
+    });
+  }
+});
 
-function generateList() {
-  let data = [];
+var premiumWallpapers = [
+  "cars_02.jpg","cars_06.jpg","cars_08.jpg","cars_01.jpg",
+  "anime_01.jpg","anime_08.jpg","anime_05.jpg","anime_11.jpg",
+  "anime_15.jpg","anime_16.jpg","anime_19.jpg","anime_23.jpg",
+  "anime_25.jpg","anime_27.jpg","anime_28.jpg","anime_31.jpg",
+  "anime_32.jpg","anime_33.jpg","anime_34.jpg","anime_38.jpg",
+  "anime_39.jpg","anime_40.jpg","anime_41.jpg","anime_42.jpg",
+  "anime_43.jpg","anime_45.jpg","anime_46.jpg","anime_47.jpg",
+  "sports_04.jpg","sports_14.jpg","sports_10.jpg",
+  "cosmic_03.jpg","cosmic_06.jpg"
+];
 
-  Object.keys(categories).forEach(cat => {
-    let count = categories[cat];
-
-    data.push(
-      ...Array.from({length: count}, (_, i) => ({
-        file: `${cat}_${String(i+1).padStart(2,'0')}.jpg`,
-        category: cat
-      }))
-    );
-  });
-
-  return data;
-}
-
-let wallpapers = generateList();
-
-/* ===== RENDER ===== */
-
-function load(category="all") {
-  let gallery = document.getElementById("gallery");
+function load(cat) {
+  currentCat = cat;
+  var gallery = document.getElementById("gallery");
+  var pag = document.getElementById("pagination");
   gallery.innerHTML = "";
+  pag.innerHTML = "";
 
-  wallpapers
-  .filter(w => category === "all" || w.category === category)
-  .forEach(w => {
-
-    gallery.innerHTML += `
-      <div class="card">
-        <img src="${w.file}" onclick="openImg('${w.file}')">
-        <a class="download" href="${w.file}" download>Download</a>
-      </div>
-    `;
+  var filtered = wallpapers.filter(function(w) {
+    return cat === "all" || w.category === cat;
   });
+
+  var total = filtered.length;
+  var totalPages = Math.ceil(total / perPage);
+  var start = (currentPage - 1) * perPage;
+  var end = start + perPage;
+  var shown = filtered.slice(start, end);
+
+  shown.forEach(function(w) {
+    gallery.innerHTML += '<div class="card"><img src="' + w.file + '" onclick="openImg(\'' + w.file + '\')"><a class="download" href="' + w.file + '" download>Download</a></div>';
+  });
+
+  if (totalPages > 1) {
+    var html = "";
+    for (var i = 1; i <= totalPages; i++) {
+      html += '<button class="page-btn ' + (i === currentPage ? "active-page" : "") + '" onclick="goTo(' + i + ')">' + i + '</button>';
+    }
+    pag.innerHTML = html;
+  }
 }
 
-/* ===== FILTER ===== */
+function goTo(page) {
+  currentPage = page;
+  load(currentCat);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
 function filter(cat) {
+  currentPage = 1;
   load(cat);
 }
 
-/* ===== OPEN IMAGE ===== */
+function showPremium() {
+  currentPage = 1;
+  var gallery = document.getElementById("gallery");
+  document.getElementById("pagination").innerHTML = "";
+  gallery.innerHTML = "";
+  premiumWallpapers.forEach(function(file) {
+    gallery.innerHTML += '<div class="card"><img src="' + file + '" class="premium-img" oncontextmenu="return false" draggable="false"><div class="watermark">VORTEX PREMIUM PREVIEW THIS<br>4K WALLPAPER CAN BE UNLOCKED BY PAYING 30 RUPEES</div><button class="download">Buy INR30</button></div>';
+  });
+}
 
-let currentIndex = 0;
+function showFavorites() {
+  document.getElementById("pagination").innerHTML = "";
+  var favs = getFavorites();
+  var gallery = document.getElementById("gallery");
+  gallery.innerHTML = "";
+  if (favs.length === 0) {
+    gallery.innerHTML = "<div style='width:100%;text-align:center;padding:60px 20px;'><h2 style='font-family:Orbitron,sans-serif;font-size:28px;color:#ffffff;text-shadow:0 0 10px #ff4d6d,0 0 20px #ff4d6d;'>No favorites yet ❤️</h2></div>";
+    return;
+  }
+  wallpapers.filter(function(w) { return favs.includes(w.file); }).forEach(function(w) {
+    gallery.innerHTML += '<div class="card fav-card"><img src="' + w.file + '" onclick="openImg(\'' + w.file + '\')"><a class="download" href="' + w.file + '" download>Download</a></div>';
+  });
+}
+
+var currentIndex = 0;
 
 function openImg(file) {
-  currentIndex = wallpapers.findIndex(w => w.file === file);
-
+  currentIndex = wallpapers.findIndex(function(w) { return w.file === file; });
   document.getElementById("viewer").style.display = "flex";
   document.getElementById("viewerImg").src = file;
   document.getElementById("downloadBtn").href = file;
+  updateFavoriteButton();
 }
 
 function closeViewer() {
@@ -189,43 +259,60 @@ function closeViewer() {
 
 function nextImage() {
   currentIndex = (currentIndex + 1) % wallpapers.length;
-
-  let file = wallpapers[currentIndex].file;
-
+  var file = wallpapers[currentIndex].file;
   document.getElementById("viewerImg").src = file;
   document.getElementById("downloadBtn").href = file;
+  updateFavoriteButton();
 }
 
 function prevImage() {
-  currentIndex =
-    (currentIndex - 1 + wallpapers.length) %
-    wallpapers.length;
-
-  let file = wallpapers[currentIndex].file;
-
+  currentIndex = (currentIndex - 1 + wallpapers.length) % wallpapers.length;
+  var file = wallpapers[currentIndex].file;
   document.getElementById("viewerImg").src = file;
   document.getElementById("downloadBtn").href = file;
+  updateFavoriteButton();
 }
 
-load();
+function getFavorites() {
+  return JSON.parse(localStorage.getItem("favorites") || "[]");
+}
+
+function saveFavorites(favs) {
+  localStorage.setItem("favorites", JSON.stringify(favs));
+}
+
+function toggleFavorite() {
+  var file = wallpapers[currentIndex].file;
+  var favs = getFavorites();
+  if (favs.includes(file)) {
+    favs = favs.filter(function(f) { return f !== file; });
+  } else {
+    favs.push(file);
+  }
+  saveFavorites(favs);
+  updateFavoriteButton();
+}
+
+function updateFavoriteButton() {
+  var file = wallpapers[currentIndex].file;
+  var favs = getFavorites();
+  document.getElementById("favBtn").innerText = favs.includes(file) ? "❤️ Favorited" : "♡ Favorite";
+}
+
+load("all");
 
 </script>
+
 <div id="viewer" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:9999;justify-content:center;align-items:center;flex-direction:column;">
-
   <button onclick="closeViewer()" style="position:absolute;top:20px;right:20px;padding:10px 15px;border:none;border-radius:10px;background:red;color:white;font-size:18px;">✕</button>
-
   <img id="viewerImg" src="" style="max-width:90%;max-height:75%;border-radius:15px;">
-
   <div style="margin-top:20px;display:flex;gap:10px;">
-  
-<button onclick="prevImage()" style="padding:12px 22px;border:none;border-radius:14px;background:linear-gradient(135deg,#7b2cff,#00c6ff);color:white;font-weight:600;box-shadow:0 0 12px rgba(0,198,255,.5);cursor:pointer;">Prev ←</button>
-
+    <button onclick="prevImage()" style="padding:12px 22px;border:none;border-radius:14px;background:linear-gradient(135deg,#7b2cff,#00c6ff);color:white;font-weight:600;box-shadow:0 0 12px rgba(0,198,255,.5);cursor:pointer;">Prev ←</button>
+    <button id="favBtn" onclick="toggleFavorite()" style="padding:12px 22px;border:none;border-radius:14px;background:linear-gradient(135deg,#ff4d6d,#ff758f);color:white;font-weight:600;box-shadow:0 0 12px rgba(255,117,143,.5);cursor:pointer;">♡ Favorite</button>
     <a id="downloadBtn" href="" download style="padding:12px 22px;border-radius:14px;background:linear-gradient(135deg,#7b2cff,#00c6ff);color:white;text-decoration:none;font-weight:600;box-shadow:0 0 12px rgba(0,198,255,.5);">Download ▼</a>
-
     <button onclick="nextImage()" style="padding:12px 22px;border:none;border-radius:14px;background:linear-gradient(135deg,#7b2cff,#00c6ff);color:white;font-weight:600;box-shadow:0 0 12px rgba(0,198,255,.5);cursor:pointer;">Next ➡</button>
-
   </div>
 </div>
-</body>
 
+</body>
 </html>
