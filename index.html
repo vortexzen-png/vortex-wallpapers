@@ -6,202 +6,179 @@
 <title>Vortex Wallpapers</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --void: #07070f; --deep: #0d0d1a; --panel: #111124;
-    --border: rgba(124,58,237,0.18); --violet: #7C3AED;
-    --cyan: #00D4FF; --pink: #FF3CAC; --white: #F0F4FF; --muted: #8892b0;
-  }
-  html { scroll-behavior: smooth; }
-  body { background: var(--void); color: var(--white); font-family: 'Inter', sans-serif; min-height: 100vh; overflow-x: hidden; }
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+:root {
+  --void:#07070f; --panel:#111124; --border:rgba(124,58,237,0.18);
+  --violet:#7C3AED; --cyan:#00D4FF; --pink:#FF3CAC;
+  --white:#F0F4FF; --muted:#8892b0;
+}
+html { scroll-behavior:smooth; }
+body { background:var(--void); color:var(--white); font-family:'Inter',sans-serif; min-height:100vh; overflow-x:hidden; }
 
-  /* AURORA */
-  .aurora { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-  .aurora::before { content:''; position:absolute; width:800px; height:600px; top:-200px; left:-200px; background:radial-gradient(ellipse,rgba(124,58,237,0.18) 0%,transparent 70%); animation:drift1 18s ease-in-out infinite alternate; }
-  .aurora::after { content:''; position:absolute; width:700px; height:500px; bottom:-100px; right:-100px; background:radial-gradient(ellipse,rgba(0,212,255,0.13) 0%,transparent 70%); animation:drift2 22s ease-in-out infinite alternate; }
-  .aurora-mid { position:absolute; width:600px; height:400px; top:40%; left:50%; transform:translate(-50%,-50%); background:radial-gradient(ellipse,rgba(255,60,172,0.07) 0%,transparent 65%); animation:drift3 26s ease-in-out infinite alternate; }
-  @keyframes drift1 { 0%{transform:translate(0,0) scale(1)} 100%{transform:translate(120px,80px) scale(1.15)} }
-  @keyframes drift2 { 0%{transform:translate(0,0) scale(1)} 100%{transform:translate(-80px,-60px) scale(1.2)} }
-  @keyframes drift3 { 0%{transform:translate(-50%,-50%) scale(1)} 100%{transform:translate(-50%,-50%) scale(1.3)} }
+/* AURORA */
+.aurora { position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+.aurora::before { content:''; position:absolute; width:800px; height:600px; top:-200px; left:-200px; background:radial-gradient(ellipse,rgba(124,58,237,0.18) 0%,transparent 70%); animation:drift1 18s ease-in-out infinite alternate; }
+.aurora::after  { content:''; position:absolute; width:700px; height:500px; bottom:-100px; right:-100px; background:radial-gradient(ellipse,rgba(0,212,255,0.13) 0%,transparent 70%); animation:drift2 22s ease-in-out infinite alternate; }
+.aurora-mid { position:absolute; width:600px; height:400px; top:40%; left:50%; transform:translate(-50%,-50%); background:radial-gradient(ellipse,rgba(255,60,172,0.07) 0%,transparent 65%); animation:drift3 26s ease-in-out infinite alternate; }
+@keyframes drift1{0%{transform:translate(0,0) scale(1)}100%{transform:translate(120px,80px) scale(1.15)}}
+@keyframes drift2{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-80px,-60px) scale(1.2)}}
+@keyframes drift3{0%{transform:translate(-50%,-50%) scale(1)}100%{transform:translate(-50%,-50%) scale(1.3)}}
 
-  /* NAV */
-  nav { position:sticky; top:0; z-index:100; background:rgba(7,7,15,0.75); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border-bottom:1px solid var(--border); padding:0 24px; height:68px; display:flex; align-items:center; justify-content:space-between; }
-  .nav-brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
-  .nav-logo { width:40px; height:40px; border-radius:10px; border:1px solid rgba(124,58,237,0.4); box-shadow:0 0 12px rgba(124,58,237,0.3); }
-  .nav-title { font-family:'Orbitron',sans-serif; font-weight:700; font-size:1.1rem; letter-spacing:2px; background:linear-gradient(90deg,var(--cyan),var(--violet)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-  .nav-actions { display:flex; align-items:center; gap:8px; }
+/* NAV */
+nav { position:sticky; top:0; z-index:100; background:rgba(7,7,15,0.8); backdrop-filter:blur(24px); border-bottom:1px solid var(--border); padding:0 24px; height:68px; display:flex; align-items:center; justify-content:space-between; }
+.nav-brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
+.nav-logo { width:40px; height:40px; border-radius:10px; border:1px solid rgba(124,58,237,0.4); box-shadow:0 0 12px rgba(124,58,237,0.3); }
+.nav-title { font-family:'Orbitron',sans-serif; font-weight:700; font-size:1.1rem; letter-spacing:2px; background:linear-gradient(90deg,var(--cyan),var(--violet)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.nav-actions { display:flex; align-items:center; gap:8px; }
 
-  /* HERO */
-  .hero { position:relative; z-index:1; text-align:center; padding:64px 24px 48px; }
-  .hero-eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:0.72rem; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--cyan); background:rgba(0,212,255,0.08); border:1px solid rgba(0,212,255,0.2); border-radius:100px; padding:6px 16px; margin-bottom:24px; }
-  .hero-eyebrow span { width:6px; height:6px; border-radius:50%; background:var(--cyan); animation:pulse 2s ease-in-out infinite; }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
+/* HERO */
+.hero { position:relative; z-index:1; text-align:center; padding:64px 24px 48px; }
+.hero-eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:0.72rem; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--cyan); background:rgba(0,212,255,0.08); border:1px solid rgba(0,212,255,0.2); border-radius:100px; padding:6px 16px; margin-bottom:24px; }
+.hero-eyebrow span { width:6px; height:6px; border-radius:50%; background:var(--cyan); animation:pulse 2s ease-in-out infinite; }
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.8)}}
+.hero h1 { font-family:'Orbitron',sans-serif; font-size:clamp(2.2rem,7vw,4.5rem); font-weight:900; letter-spacing:2px; line-height:1.08; margin-bottom:16px; }
+.hero h1 .line1 { display:block; background:linear-gradient(90deg,var(--cyan),var(--violet),var(--pink),var(--cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; background-size:300%; animation:shimmer 4s linear infinite; }
+.hero h1 .line2 { display:block; background:linear-gradient(90deg,#ffffff,#c4b5fd,#ffffff); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; background-size:200%; animation:shimmer2 5s linear infinite; letter-spacing:4px; font-size:0.55em; margin-top:6px; }
+@keyframes shimmer{0%{background-position:0%}100%{background-position:300%}}
+@keyframes shimmer2{0%{background-position:0%}100%{background-position:200%}}
+.hero-sub { font-size:1rem; color:var(--muted); font-weight:300; max-width:420px; margin:0 auto 40px; }
 
-  .hero h1 { font-family:'Orbitron',sans-serif; font-size:clamp(2.2rem,7vw,4.5rem); font-weight:900; letter-spacing:2px; line-height:1.08; margin-bottom:16px; }
-  /* VORTEX — gradient shimmer */
-  .hero h1 .line1 {
-    display:block;
-    background: linear-gradient(90deg, var(--cyan), var(--violet), var(--pink), var(--cyan));
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-    background-clip:text; background-size:300%;
-    animation:shimmer 4s linear infinite;
-    text-shadow: none;
-  }
-  /* WALLPAPERS — white with glow */
-  .hero h1 .line2 {
-    display:block;
-    background: linear-gradient(90deg, #ffffff, #c4b5fd, #ffffff);
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-    background-clip:text; background-size:200%;
-    animation:shimmer2 5s linear infinite;
-    letter-spacing:4px;
-    font-size:0.55em;
-    margin-top:6px;
-  }
-  @keyframes shimmer { 0%{background-position:0%} 100%{background-position:300%} }
-  @keyframes shimmer2 { 0%{background-position:0%} 100%{background-position:200%} }
-  .hero-sub { font-size:1rem; color:var(--muted); font-weight:300; max-width:420px; margin:0 auto 40px; }
+/* FILTER BAR */
+.filter-bar { position:relative; z-index:1; display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:8px; padding:0 24px 40px; }
+.filter-btn { padding:9px 20px; border-radius:100px; border:1px solid var(--border); background:rgba(255,255,255,0.04); color:var(--muted); font-family:'Inter',sans-serif; font-size:0.85rem; font-weight:500; cursor:pointer; transition:all 0.2s ease; }
+.filter-btn:hover { border-color:rgba(124,58,237,0.5); color:var(--white); background:rgba(124,58,237,0.1); }
+.filter-btn.active { background:linear-gradient(135deg,var(--violet),#5B21B6); border-color:transparent; color:#fff; box-shadow:0 0 20px rgba(124,58,237,0.4); }
+.filter-btn.fav-btn { border-color:rgba(255,60,172,0.3); color:var(--pink); }
+.filter-btn.fav-btn.active { background:linear-gradient(135deg,#FF3CAC,#c026d3); border-color:transparent; color:#fff; }
+.filter-btn.premium-btn { border-color:rgba(251,191,36,0.3); color:#FBBf24; }
+.filter-btn.premium-btn.active { background:linear-gradient(135deg,#F59E0B,#D97706); border-color:transparent; color:#fff; }
 
-  /* FILTER BAR */
-  .filter-bar { position:relative; z-index:1; display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:8px; padding:0 24px 40px; }
-  .filter-btn { padding:9px 20px; border-radius:100px; border:1px solid var(--border); background:rgba(255,255,255,0.04); color:var(--muted); font-family:'Inter',sans-serif; font-size:0.85rem; font-weight:500; cursor:pointer; transition:all 0.2s ease; letter-spacing:0.3px; }
-  .filter-btn:hover { border-color:rgba(124,58,237,0.5); color:var(--white); background:rgba(124,58,237,0.1); }
-  .filter-btn.active { background:linear-gradient(135deg,var(--violet),#5B21B6); border-color:transparent; color:#fff; box-shadow:0 0 20px rgba(124,58,237,0.4); }
-  .filter-btn.fav-btn { border-color:rgba(255,60,172,0.3); color:var(--pink); }
-  .filter-btn.fav-btn:hover, .filter-btn.fav-btn.active { background:linear-gradient(135deg,#FF3CAC,#c026d3); border-color:transparent; color:#fff; box-shadow:0 0 20px rgba(255,60,172,0.4); }
-  .filter-btn.premium-btn { border-color:rgba(251,191,36,0.3); color:#FBBf24; }
-  .filter-btn.premium-btn:hover, .filter-btn.premium-btn.active { background:linear-gradient(135deg,#F59E0B,#D97706); border-color:transparent; color:#fff; box-shadow:0 0 20px rgba(245,158,11,0.4); }
+/* SECTION LABEL */
+.section-label { position:relative; z-index:1; display:flex; align-items:center; gap:16px; padding:0 24px 20px; max-width:1600px; margin:0 auto; }
+.section-label h2 { font-family:'Orbitron',sans-serif; font-size:0.8rem; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--muted); white-space:nowrap; }
+.count-badge { padding:3px 10px; border-radius:100px; background:rgba(124,58,237,0.15); border:1px solid rgba(124,58,237,0.3); font-size:0.72rem; color:var(--violet); font-weight:600; }
+.section-divider { flex:1; height:1px; background:linear-gradient(90deg,rgba(124,58,237,0.3),transparent); }
 
-  /* SECTION LABEL */
-  .section-label { position:relative; z-index:1; display:flex; align-items:center; gap:16px; padding:0 24px 20px; max-width:1600px; margin:0 auto; }
-  .section-label h2 { font-family:'Orbitron',sans-serif; font-size:0.8rem; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--muted); white-space:nowrap; }
-  .section-label .count-badge { padding:3px 10px; border-radius:100px; background:rgba(124,58,237,0.15); border:1px solid rgba(124,58,237,0.3); font-size:0.72rem; color:var(--violet); font-weight:600; }
-  .section-divider { flex:1; height:1px; background:linear-gradient(90deg,rgba(124,58,237,0.3),transparent); }
+/* GALLERY */
+.gallery-wrap { position:relative; z-index:1; padding:0 20px; max-width:1600px; margin:0 auto; }
+.gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; }
 
-  /* GALLERY */
-  .gallery-wrap { position:relative; z-index:1; padding:0 20px; max-width:1600px; margin:0 auto; }
-  .gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; }
+/* CARD */
+.card { background:var(--panel); border:1px solid var(--border); border-radius:16px; overflow:hidden; position:relative; transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s; }
+.card:hover { transform:translateY(-5px); border-color:rgba(124,58,237,0.45); box-shadow:0 16px 40px rgba(0,0,0,0.5),0 0 30px rgba(124,58,237,0.12); }
+.card-img-wrap { position:relative; overflow:hidden; }
 
-  /* CARD */
-  .card { background:var(--panel); border:1px solid var(--border); border-radius:16px; overflow:hidden; position:relative; transition:transform 0.25s ease,box-shadow 0.25s ease,border-color 0.25s ease; }
-  .card:hover { transform:translateY(-5px); border-color:rgba(124,58,237,0.45); box-shadow:0 16px 40px rgba(0,0,0,0.5),0 0 30px rgba(124,58,237,0.12); }
-  .card-img-wrap { position:relative; overflow:hidden; }
-  .card img { width:100%; height:220px; object-fit:cover; display:block; transition:transform 0.4s ease; cursor:pointer; }
-  .card:hover img { transform:scale(1.06); }
-  .card-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(7,7,15,0.85) 0%,transparent 50%); opacity:0; transition:opacity 0.25s ease; display:flex; align-items:flex-end; justify-content:center; padding-bottom:14px; pointer-events:none; }
-  .card:hover .card-overlay { opacity:1; pointer-events:auto; }
-  .card-footer { padding:12px 14px; display:flex; align-items:center; justify-content:space-between; border-top:1px solid rgba(255,255,255,0.05); }
-  .card-cat { font-size:0.7rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); }
-  .download-btn { display:inline-flex; align-items:center; gap:5px; padding:6px 14px; border-radius:8px; background:linear-gradient(135deg,var(--violet),#5B21B6); color:#fff; text-decoration:none; font-size:0.75rem; font-weight:600; transition:opacity 0.2s; border:none; cursor:pointer; font-family:'Inter',sans-serif; }
-  .download-btn:hover { opacity:0.85; }
-  .download-btn.amber { background:linear-gradient(135deg,#F59E0B,#D97706); }
+/* THE KEY FIX: img is clickable, overlay sits on top but pointer-events none normally */
+.card-thumb { width:100%; height:220px; object-fit:cover; display:block; cursor:pointer; transition:transform 0.4s; }
+.card:hover .card-thumb { transform:scale(1.06); }
+.card-overlay { position:absolute; bottom:0; left:0; right:0; height:60px; background:linear-gradient(to top,rgba(7,7,15,0.9),transparent); display:flex; align-items:flex-end; justify-content:center; padding-bottom:10px; opacity:0; transition:opacity 0.25s; pointer-events:none; }
+.card:hover .card-overlay { opacity:1; pointer-events:auto; }
 
-  /* HEART */
-  .heart-btn { position:absolute; top:10px; left:10px; z-index:5; width:34px; height:34px; border-radius:50%; background:rgba(7,7,15,0.75); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:16px; transition:transform 0.2s ease,border-color 0.2s ease; }
-  .heart-btn:hover { transform:scale(1.15); border-color:var(--pink); }
-  .cat-tag { position:absolute; top:10px; right:10px; z-index:5; padding:3px 10px; border-radius:100px; background:rgba(7,7,15,0.75); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.1); font-size:0.65rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--cyan); }
+.card-footer { padding:12px 14px; display:flex; align-items:center; justify-content:space-between; border-top:1px solid rgba(255,255,255,0.05); }
+.card-cat { font-size:0.7rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); }
+.dl-btn { display:inline-flex; align-items:center; gap:5px; padding:6px 14px; border-radius:8px; background:linear-gradient(135deg,var(--violet),#5B21B6); color:#fff; text-decoration:none; font-size:0.75rem; font-weight:600; border:none; cursor:pointer; font-family:'Inter',sans-serif; transition:opacity 0.2s; }
+.dl-btn:hover { opacity:0.85; }
+.dl-btn.amber { background:linear-gradient(135deg,#F59E0B,#D97706); }
 
-  /* PREMIUM SECURITY */
-  .premium-shield {
-    position:absolute; inset:0; z-index:3;
-    background:transparent;
-    cursor:not-allowed;
-  }
-  .watermark {
-    position:absolute; top:50%; left:50%;
-    transform:translate(-50%,-50%) rotate(-30deg);
-    z-index:4; pointer-events:none;
-    text-align:center; width:95%;
-    font-family:'Orbitron',sans-serif;
-    font-size:clamp(14px,3vw,22px);
-    font-weight:900;
-    letter-spacing:2px;
-    line-height:1.8;
-    text-transform:uppercase;
-    color:rgba(255,255,255,0.0);
-    /* layered text-shadow creates big visible watermark without filling text */
-    text-shadow:
-      0 0 0 rgba(255,255,255,0.55),
-      1px 1px 0 rgba(255,255,255,0.55),
-      -1px -1px 0 rgba(255,255,255,0.55),
-      1px -1px 0 rgba(255,255,255,0.55),
-      -1px 1px 0 rgba(255,255,255,0.55),
-      0 0 20px rgba(124,58,237,0.6),
-      0 0 40px rgba(0,212,255,0.3);
-    -webkit-text-stroke: 1.5px rgba(255,255,255,0.55);
-  }
-  .premium-badge { position:absolute; top:10px; right:10px; z-index:6; padding:3px 10px; border-radius:100px; background:rgba(245,158,11,0.2); backdrop-filter:blur(8px); border:1px solid rgba(245,158,11,0.5); font-size:0.65rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#FBBf24; }
-  .premium-img { pointer-events:none; user-select:none; -webkit-user-drag:none; -webkit-user-select:none; width:100%; height:220px; object-fit:cover; display:block; }
+.heart-btn { position:absolute; top:10px; left:10px; z-index:5; width:34px; height:34px; border-radius:50%; background:rgba(7,7,15,0.8); border:1px solid rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:15px; transition:transform 0.2s; }
+.heart-btn:hover { transform:scale(1.2); }
+.cat-tag { position:absolute; top:10px; right:10px; z-index:5; padding:3px 10px; border-radius:100px; background:rgba(7,7,15,0.8); border:1px solid rgba(255,255,255,0.1); font-size:0.65rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--cyan); pointer-events:none; }
 
-  /* EMPTY STATE */
-  .empty-state { grid-column:1/-1; text-align:center; padding:80px 24px; }
-  .empty-state .empty-icon { font-size:3rem; margin-bottom:16px; }
-  .empty-state h3 { font-family:'Orbitron',sans-serif; font-size:1.2rem; color:var(--white); margin-bottom:8px; }
-  .empty-state p { color:var(--muted); font-size:0.9rem; }
+/* PREMIUM */
+.premium-shield { position:absolute; inset:0; z-index:3; cursor:not-allowed; }
+.watermark { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) rotate(-30deg); z-index:4; pointer-events:none; text-align:center; width:90%; font-family:'Orbitron',sans-serif; font-size:clamp(13px,2.5vw,20px); font-weight:900; letter-spacing:2px; line-height:1.9; text-transform:uppercase; color:transparent; -webkit-text-stroke:1.5px rgba(255,255,255,0.6); text-shadow:0 0 30px rgba(124,58,237,0.7),0 0 60px rgba(0,212,255,0.4); }
+.premium-badge { position:absolute; top:10px; right:10px; z-index:6; padding:3px 10px; border-radius:100px; background:rgba(245,158,11,0.2); border:1px solid rgba(245,158,11,0.5); font-size:0.65rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#FBBf24; }
+.premium-img { pointer-events:none; user-select:none; -webkit-user-drag:none; -webkit-user-select:none; width:100%; height:220px; object-fit:cover; display:block; }
 
-  /* PAGINATION */
-  #pagination { position:relative; z-index:1; display:flex; justify-content:center; align-items:center; gap:6px; flex-wrap:wrap; padding:40px 24px 60px; }
-  .page-btn { width:40px; height:40px; border:1px solid var(--border); border-radius:10px; background:var(--panel); color:var(--muted); font-family:'Inter',sans-serif; font-size:0.85rem; font-weight:500; cursor:pointer; transition:all 0.2s ease; display:flex; align-items:center; justify-content:center; }
-  .page-btn:hover { border-color:rgba(124,58,237,0.5); color:var(--white); }
-  .page-btn.active-page { background:linear-gradient(135deg,var(--violet),#5B21B6); border-color:transparent; color:#fff; box-shadow:0 0 14px rgba(124,58,237,0.4); }
-  .page-ellipsis { color:var(--muted); padding:0 4px; }
+/* EMPTY */
+.empty-state { grid-column:1/-1; text-align:center; padding:80px 24px; }
+.empty-icon { font-size:3rem; margin-bottom:16px; }
+.empty-state h3 { font-family:'Orbitron',sans-serif; font-size:1.2rem; color:var(--white); margin-bottom:8px; }
+.empty-state p { color:var(--muted); font-size:0.9rem; }
 
-  /* FULLSCREEN VIEWER */
-  #viewer {
-    display:none; position:fixed; inset:0; z-index:9999;
-    background:rgba(3,3,10,0.97); backdrop-filter:blur(28px); -webkit-backdrop-filter:blur(28px);
-    flex-direction:column; align-items:center; justify-content:center;
-    padding:20px;
-  }
-  #viewer.open { display:flex; animation:fadeIn 0.2s ease; }
-  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+/* PAGINATION */
+#pagination { position:relative; z-index:1; display:flex; justify-content:center; align-items:center; gap:6px; flex-wrap:wrap; padding:40px 24px 60px; }
+.page-btn { width:40px; height:40px; border:1px solid var(--border); border-radius:10px; background:var(--panel); color:var(--muted); font-size:0.85rem; font-weight:500; cursor:pointer; transition:all 0.2s; display:flex; align-items:center; justify-content:center; font-family:'Inter',sans-serif; }
+.page-btn:hover { border-color:rgba(124,58,237,0.5); color:var(--white); }
+.page-btn.active-page { background:linear-gradient(135deg,var(--violet),#5B21B6); border-color:transparent; color:#fff; box-shadow:0 0 14px rgba(124,58,237,0.4); }
+.page-ellipsis { color:var(--muted); padding:0 4px; }
 
-  .viewer-close { position:absolute; top:18px; right:18px; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); color:var(--white); font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.2s,border-color 0.2s; z-index:10; }
-  .viewer-close:hover { background:rgba(239,68,68,0.3); border-color:rgba(239,68,68,0.5); }
+/* ===================== VIEWER ===================== */
+#viewer {
+  position:fixed; inset:0; z-index:99999;
+  background:rgba(0,0,0,0.96);
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+}
+#viewer.is-open {
+  display:flex;
+}
+.v-close {
+  position:absolute; top:16px; right:16px;
+  width:46px; height:46px; border-radius:50%;
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.2);
+  color:#fff; font-size:22px; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  z-index:10;
+}
+.v-close:hover { background:rgba(220,50,50,0.5); }
+#viewerImg {
+  max-width:90vw;
+  max-height:72vh;
+  width:auto; height:auto;
+  border-radius:12px;
+  display:block;
+  object-fit:contain;
+  box-shadow:0 0 80px rgba(0,0,0,0.9);
+}
+.v-controls {
+  margin-top:18px;
+  display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:center;
+}
+.v-btn {
+  padding:12px 22px; border-radius:12px; border:none;
+  font-family:'Inter',sans-serif; font-size:0.88rem; font-weight:600;
+  cursor:pointer; display:inline-flex; align-items:center; gap:6px;
+  text-decoration:none; transition:opacity 0.2s; color:#fff;
+}
+.v-btn-nav { background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); }
+.v-btn-nav:hover { background:rgba(255,255,255,0.2); }
+.v-btn-dl { background:linear-gradient(135deg,#7C3AED,#5B21B6); box-shadow:0 0 18px rgba(124,58,237,0.4); }
+.v-btn-fav { background:rgba(255,60,172,0.15); border:1px solid rgba(255,60,172,0.3); color:var(--pink); }
+.v-btn-fav.on { background:linear-gradient(135deg,#FF3CAC,#c026d3); border-color:transparent; color:#fff; }
+#v-counter { margin-top:10px; font-family:'Orbitron',sans-serif; font-size:0.75rem; color:var(--muted); letter-spacing:2px; }
 
-  #viewerImg { max-width:min(92vw,1100px); max-height:74vh; border-radius:14px; object-fit:contain; box-shadow:0 0 100px rgba(0,0,0,0.9),0 0 0 1px rgba(255,255,255,0.05); display:block; }
+/* FOOTER */
+footer { position:relative; z-index:1; border-top:1px solid var(--border); padding:28px 24px; text-align:center; color:var(--muted); font-size:0.78rem; }
+footer span { color:var(--violet); }
 
-  .viewer-controls { margin-top:22px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:center; }
-  .viewer-btn { padding:12px 24px; border-radius:12px; border:none; font-family:'Inter',sans-serif; font-size:0.88rem; font-weight:600; cursor:pointer; transition:all 0.2s; display:inline-flex; align-items:center; gap:7px; text-decoration:none; letter-spacing:0.3px; }
-  .v-nav { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); color:var(--white); }
-  .v-nav:hover { background:rgba(255,255,255,0.13); }
-  .v-dl { background:linear-gradient(135deg,var(--violet),#5B21B6); color:#fff; box-shadow:0 0 18px rgba(124,58,237,0.35); }
-  .v-dl:hover { opacity:0.88; }
-  .v-fav { background:rgba(255,60,172,0.1); border:1px solid rgba(255,60,172,0.25); color:var(--pink); }
-  .v-fav:hover { background:rgba(255,60,172,0.18); }
-  .v-fav.active { background:linear-gradient(135deg,#FF3CAC,#c026d3); border-color:transparent; color:#fff; }
-
-  /* counter */
-  #viewerCounter { font-size:0.78rem; color:var(--muted); margin-top:10px; font-family:'Orbitron',sans-serif; letter-spacing:1px; }
-
-  /* FOOTER */
-  footer { position:relative; z-index:1; border-top:1px solid var(--border); padding:28px 24px; text-align:center; color:var(--muted); font-size:0.78rem; letter-spacing:0.5px; }
-  footer span { color:var(--violet); }
-
-  /* RESPONSIVE */
-  @media(max-width:640px) {
-    .gallery { grid-template-columns:repeat(2,1fr); gap:10px; }
-    .card img, .premium-img { height:160px; }
-    .hero { padding:40px 16px 32px; }
-    nav { padding:0 14px; }
-    .gallery-wrap { padding:0 12px; }
-    .filter-bar { gap:6px; padding:0 12px 28px; }
-    .filter-btn { padding:8px 14px; font-size:0.8rem; }
-    .viewer-btn { padding:10px 16px; font-size:0.8rem; }
-    .watermark { font-size:11px; }
-  }
-  @media(min-width:1200px) {
-    .gallery { grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); }
-  }
+/* RESPONSIVE */
+@media(max-width:640px){
+  .gallery { grid-template-columns:repeat(2,1fr); gap:10px; }
+  .card-thumb,.premium-img { height:160px; }
+  nav { padding:0 14px; }
+  .gallery-wrap { padding:0 12px; }
+  .filter-bar { gap:6px; padding:0 12px 28px; }
+  .filter-btn { padding:8px 14px; font-size:0.8rem; }
+  .v-btn { padding:10px 16px; font-size:0.8rem; }
+}
+@media(min-width:1200px){
+  .gallery { grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); }
+}
 </style>
 </head>
 <body>
+
 <div class="aurora"><div class="aurora-mid"></div></div>
 
 <!-- NAV -->
 <nav>
   <a class="nav-brand" href="#">
-    <img src="logo.png" alt="Vortex Logo" class="nav-logo">
+    <img src="logo.png" alt="Logo" class="nav-logo">
     <span class="nav-title">VORTEX</span>
   </a>
   <div class="nav-actions">
@@ -213,24 +190,21 @@
 <!-- HERO -->
 <div class="hero">
   <div class="hero-eyebrow"><span></span> Free 4K Wallpapers</div>
-  <h1>
-    <span class="line1">VORTEX</span>
-    <span class="line2">WALLPAPERS</span>
-  </h1>
-  <p class="hero-sub">Curated high-resolution wallpapers for every screen — anime, cosmic, sports &amp; more.</p>
+  <h1><span class="line1">VORTEX</span><span class="line2">WALLPAPERS</span></h1>
+  <p class="hero-sub">Curated high-resolution wallpapers — anime, cosmic, sports &amp; more.</p>
 </div>
 
-<!-- FILTER BAR -->
+<!-- FILTERS -->
 <div class="filter-bar">
-  <button class="filter-btn active" data-cat="all" onclick="filter('all',this)">All</button>
-  <button class="filter-btn" data-cat="anime" onclick="filter('anime',this)">Anime</button>
-  <button class="filter-btn" data-cat="sports" onclick="filter('sports',this)">Sports</button>
-  <button class="filter-btn" data-cat="cosmic" onclick="filter('cosmic',this)">Cosmic</button>
-  <button class="filter-btn" data-cat="cars" onclick="filter('cars',this)">Cars</button>
+  <button class="filter-btn active" data-cat="all"    onclick="filter('all',this)">All</button>
+  <button class="filter-btn"        data-cat="anime"  onclick="filter('anime',this)">Anime</button>
+  <button class="filter-btn"        data-cat="sports" onclick="filter('sports',this)">Sports</button>
+  <button class="filter-btn"        data-cat="cosmic" onclick="filter('cosmic',this)">Cosmic</button>
+  <button class="filter-btn"        data-cat="cars"   onclick="filter('cars',this)">Cars</button>
 </div>
 
 <!-- SECTION LABEL -->
-<div class="section-label" id="sectionLabel">
+<div class="section-label">
   <h2 id="sectionTitle">All Wallpapers</h2>
   <span class="count-badge" id="countBadge">0</span>
   <div class="section-divider"></div>
@@ -242,249 +216,212 @@
 </div>
 <div id="pagination"></div>
 
-<!-- FOOTER -->
-<footer>© 2025 <span>Vortex Wallpapers</span> — All rights reserved. Wallpapers are for personal use only.</footer>
+<footer>© 2025 <span>Vortex Wallpapers</span> — All rights reserved.</footer>
 
-<!-- FULLSCREEN VIEWER -->
+<!-- ===== FULLSCREEN VIEWER ===== -->
 <div id="viewer">
-  <button class="viewer-close" onclick="closeViewer()">✕</button>
-  <img id="viewerImg" src="" alt="">
-  <div class="viewer-controls">
-    <button class="viewer-btn v-nav" onclick="prevImage()">← Prev</button>
-    <button class="viewer-btn v-fav" id="favBtn" onclick="toggleFavorite()">♡ Save</button>
-    <a class="viewer-btn v-dl" id="downloadBtn" href="" download>↓ Download</a>
-    <button class="viewer-btn v-nav" onclick="nextImage()">Next →</button>
+  <button class="v-close" id="vClose">✕</button>
+  <img id="viewerImg" src="" alt="wallpaper">
+  <div class="v-controls">
+    <button class="v-btn v-btn-nav" id="vPrev">← Prev</button>
+    <button class="v-btn v-btn-fav" id="vFav">♡ Save</button>
+    <a      class="v-btn v-btn-dl"  id="vDl" href="" download>↓ Download</a>
+    <button class="v-btn v-btn-nav" id="vNext">Next →</button>
   </div>
-  <div id="viewerCounter"></div>
+  <div id="v-counter"></div>
 </div>
 
 <script>
-  /* ── DATA ── */
-  var categories = { anime:50, sports:14, cosmic:7, cars:8 };
-  var currentPage = 1, perPage = 20, currentCat = "all", currentMode = "browse";
+/* ── DATA ── */
+var categories = {anime:50,sports:14,cosmic:7,cars:8};
+var wallpapers = [];
+Object.keys(categories).forEach(function(cat){
+  for(var i=1;i<=categories[cat];i++)
+    wallpapers.push({file:cat+'_'+(i<10?'0'+i:i)+'.jpg',category:cat});
+});
 
-  var wallpapers = [];
-  Object.keys(categories).forEach(function(cat){
-    var count = categories[cat];
-    for(var i=1;i<=count;i++) wallpapers.push({ file: cat+"_"+(i<10?"0"+i:i)+".jpg", category:cat });
-  });
+var premiumList = [
+  'cars_02.jpg','cars_06.jpg','cars_08.jpg','cars_01.jpg',
+  'anime_01.jpg','anime_08.jpg','anime_05.jpg','anime_11.jpg',
+  'anime_15.jpg','anime_16.jpg','anime_19.jpg','anime_23.jpg',
+  'anime_25.jpg','anime_27.jpg','anime_28.jpg','anime_31.jpg',
+  'anime_32.jpg','anime_33.jpg','anime_34.jpg','anime_38.jpg',
+  'anime_39.jpg','anime_40.jpg','anime_41.jpg','anime_42.jpg',
+  'anime_43.jpg','anime_45.jpg','anime_46.jpg','anime_47.jpg',
+  'sports_04.jpg','sports_14.jpg','sports_10.jpg',
+  'cosmic_03.jpg','cosmic_06.jpg'
+];
+var premiumSet  = new Set(premiumList);
+var freeList    = wallpapers.filter(function(w){return !premiumSet.has(w.file);});
 
-  var premiumWallpapers = [
-    "cars_02.jpg","cars_06.jpg","cars_08.jpg","cars_01.jpg",
-    "anime_01.jpg","anime_08.jpg","anime_05.jpg","anime_11.jpg",
-    "anime_15.jpg","anime_16.jpg","anime_19.jpg","anime_23.jpg",
-    "anime_25.jpg","anime_27.jpg","anime_28.jpg","anime_31.jpg",
-    "anime_32.jpg","anime_33.jpg","anime_34.jpg","anime_38.jpg",
-    "anime_39.jpg","anime_40.jpg","anime_41.jpg","anime_42.jpg",
-    "anime_43.jpg","anime_45.jpg","anime_46.jpg","anime_47.jpg",
-    "sports_04.jpg","sports_14.jpg","sports_10.jpg",
-    "cosmic_03.jpg","cosmic_06.jpg"
-  ];
-  var premiumSet = new Set(premiumWallpapers);
-  var freeWallpapers = wallpapers.filter(function(w){ return !premiumSet.has(w.file); });
+var currentPage = 1, perPage = 20, currentCat = 'all', currentMode = 'browse';
 
-  var currentIndex = 0, currentImgList = [];
+/* ── STORAGE ── */
+function getFavs(){ return JSON.parse(localStorage.getItem('vx_favs')||'[]'); }
+function setFavs(f){ localStorage.setItem('vx_favs',JSON.stringify(f)); }
 
-  /* ── HELPERS ── */
-  function getFavorites(){ return JSON.parse(localStorage.getItem("vortex_favs")||"[]"); }
-  function saveFavorites(f){ localStorage.setItem("vortex_favs",JSON.stringify(f)); }
-  function setSectionLabel(title,count){ document.getElementById("sectionTitle").textContent=title; document.getElementById("countBadge").textContent=count; }
-  function setAllBtnsInactive(){ document.querySelectorAll(".filter-btn").forEach(function(b){ b.classList.remove("active"); }); }
+/* ── LABEL ── */
+function setLabel(t,n){
+  document.getElementById('sectionTitle').textContent=t;
+  document.getElementById('countBadge').textContent=n;
+}
+function clearActive(){
+  document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active');});
+}
 
-  /* ── CARD BUILDERS ── */
-  function buildFreeCard(w){
-    var isFav = getFavorites().includes(w.file);
-    var cat = w.category.charAt(0).toUpperCase()+w.category.slice(1);
-    return '<div class="card">'+
-      '<div class="heart-btn" onclick="toggleFavoriteFromCard(\''+w.file+'\',event)">'+(isFav?"❤️":"♡")+'</div>'+
-      '<span class="cat-tag">'+cat+'</span>'+
-      '<div class="card-img-wrap">'+
-        '<img src="'+w.file+'" loading="lazy" onclick="openImg(\''+w.file+'\')" alt="'+cat+' wallpaper">'+
-        '<div class="card-overlay"><a class="download-btn" href="'+w.file+'" download onclick="event.stopPropagation()">↓ Download</a></div>'+
-      '</div>'+
-      '<div class="card-footer">'+
-        '<span class="card-cat">'+cat+'</span>'+
-        '<a class="download-btn" href="'+w.file+'" download>↓</a>'+
-      '</div>'+
-    '</div>';
-  }
+/* ── CARDS ── */
+function freeCard(w){
+  var fav=getFavs().includes(w.file);
+  var c=w.category[0].toUpperCase()+w.category.slice(1);
+  return '<div class="card">'
+    +'<div class="heart-btn" onclick="toggleFav(\''+w.file+'\',event)">'+(fav?'❤️':'♡')+'</div>'
+    +'<span class="cat-tag">'+c+'</span>'
+    +'<div class="card-img-wrap">'
+      +'<img class="card-thumb" src="'+w.file+'" loading="lazy" onclick="openViewer(\''+w.file+'\')" alt="'+c+'">'
+      +'<div class="card-overlay"><a class="dl-btn" href="'+w.file+'" download onclick="event.stopPropagation()">↓ Download</a></div>'
+    +'</div>'
+    +'<div class="card-footer"><span class="card-cat">'+c+'</span><a class="dl-btn" href="'+w.file+'" download>↓</a></div>'
+    +'</div>';
+}
 
-  function buildPremiumCard(file){
-    return '<div class="card" oncontextmenu="return false">'+
-      '<span class="premium-badge">✦ Premium</span>'+
-      '<div class="card-img-wrap" style="position:relative;">'+
-        '<img src="'+file+'" class="premium-img" '+
-          'oncontextmenu="return false" ondragstart="return false" '+
-          'onselectstart="return false" draggable="false" alt="Premium wallpaper">'+
-        /* full-cover transparent shield blocks all mouse interaction */
-        '<div class="premium-shield" oncontextmenu="return false" ondragstart="return false"></div>'+
-        '<div class="watermark">VORTEX<br>PREMIUM<br>UNLOCK ₹30</div>'+
-      '</div>'+
-      '<div class="card-footer">'+
-        '<span class="card-cat" style="color:#FBBf24;">✦ Premium</span>'+
-        '<button class="download-btn amber" onclick="alert(\'🔐 Pay ₹30 to unlock this 4K wallpaper!\')">₹30 Unlock</button>'+
-      '</div>'+
-    '</div>';
-  }
+function premCard(file){
+  return '<div class="card" oncontextmenu="return false">'
+    +'<span class="premium-badge">✦ Premium</span>'
+    +'<div class="card-img-wrap" style="position:relative">'
+      +'<img class="premium-img" src="'+file+'" draggable="false" oncontextmenu="return false" ondragstart="return false" alt="premium">'
+      +'<div class="premium-shield" oncontextmenu="return false"></div>'
+      +'<div class="watermark">VORTEX<br>PREMIUM<br>UNLOCK ₹30</div>'
+    +'</div>'
+    +'<div class="card-footer"><span class="card-cat" style="color:#FBBf24">✦ Premium</span>'
+    +'<button class="dl-btn amber" onclick="alert(\'🔐 Pay ₹30 to unlock!\')">₹30 Unlock</button></div>'
+    +'</div>';
+}
 
-  /* ── LOAD FREE GALLERY ── */
-  function load(cat){
-    currentCat = cat; currentMode = "browse";
-    var gallery = document.getElementById("gallery");
-    var pag = document.getElementById("pagination");
-    gallery.innerHTML = ""; pag.innerHTML = "";
-
-    var filtered = freeWallpapers.filter(function(w){ return cat==="all"||w.category===cat; });
-    var total = filtered.length;
-    var totalPages = Math.ceil(total/perPage);
-    var start = (currentPage-1)*perPage;
-    var shown = filtered.slice(start, start+perPage);
-
-    var labels = {all:"All Wallpapers",anime:"Anime",sports:"Sports",cosmic:"Cosmic",cars:"Cars"};
-    setSectionLabel(labels[cat]||cat, total);
-
-    if(shown.length===0){
-      gallery.innerHTML='<div class="empty-state"><div class="empty-icon">🖼️</div><h3>No wallpapers here yet</h3><p>Check back soon.</p></div>';
-      return;
+/* ── LOAD ── */
+function load(cat){
+  currentCat=cat; currentMode='browse';
+  var g=document.getElementById('gallery');
+  var p=document.getElementById('pagination');
+  g.innerHTML=''; p.innerHTML='';
+  var list=freeList.filter(function(w){return cat==='all'||w.category===cat;});
+  var labels={all:'All Wallpapers',anime:'Anime',sports:'Sports',cosmic:'Cosmic',cars:'Cars'};
+  setLabel(labels[cat]||cat, list.length);
+  var pages=Math.ceil(list.length/perPage);
+  var shown=list.slice((currentPage-1)*perPage, currentPage*perPage);
+  if(!shown.length){ g.innerHTML='<div class="empty-state"><div class="empty-icon">🖼️</div><h3>Nothing here yet</h3><p>Check back soon.</p></div>'; return; }
+  shown.forEach(function(w){g.innerHTML+=freeCard(w);});
+  if(pages>1){
+    var h='';
+    for(var i=1;i<=pages;i++){
+      if(i===1||i===pages||Math.abs(i-currentPage)<=2)
+        h+='<button class="page-btn'+(i===currentPage?' active-page':'')+'" onclick="goTo('+i+')">'+i+'</button>';
+      else if(Math.abs(i-currentPage)===3) h+='<span class="page-ellipsis">…</span>';
     }
-    shown.forEach(function(w){ gallery.innerHTML += buildFreeCard(w); });
-
-    if(totalPages>1){
-      var html="";
-      for(var i=1;i<=totalPages;i++){
-        if(i===1||i===totalPages||Math.abs(i-currentPage)<=2){
-          html+='<button class="page-btn '+(i===currentPage?"active-page":"")+'" onclick="goTo('+i+')">'+i+'</button>';
-        } else if(Math.abs(i-currentPage)===3){
-          html+='<span class="page-ellipsis">…</span>';
-        }
-      }
-      pag.innerHTML = html;
-    }
+    p.innerHTML=h;
   }
+}
 
-  function goTo(page){ currentPage=page; load(currentCat); window.scrollTo({top:0,behavior:"smooth"}); }
+function goTo(n){ currentPage=n; load(currentCat); window.scrollTo({top:0,behavior:'smooth'}); }
+function filter(cat,el){ currentPage=1; clearActive(); if(el)el.classList.add('active'); load(cat); }
 
-  function filter(cat,el){
-    currentPage=1;
-    setAllBtnsInactive();
-    if(el) el.classList.add("active");
-    load(cat);
-  }
+function showPremium(el){
+  currentMode='premium'; clearActive(); if(el)el.classList.add('active');
+  document.getElementById('pagination').innerHTML='';
+  setLabel('Premium Wallpapers',premiumList.length);
+  var g=document.getElementById('gallery'); g.innerHTML='';
+  premiumList.forEach(function(f){g.innerHTML+=premCard(f);});
+}
 
-  /* ── PREMIUM ── */
-  function showPremium(el){
-    currentMode="premium"; currentPage=1;
-    setAllBtnsInactive();
-    if(el) el.classList.add("active");
-    document.getElementById("pagination").innerHTML="";
-    setSectionLabel("Premium Wallpapers", premiumWallpapers.length);
-    var gallery=document.getElementById("gallery");
-    gallery.innerHTML="";
-    premiumWallpapers.forEach(function(file){ gallery.innerHTML+=buildPremiumCard(file); });
-  }
-
-  /* ── FAVORITES ── */
-  function showFavorites(el){
-    currentMode="favorites";
-    document.getElementById("pagination").innerHTML="";
-    setAllBtnsInactive();
-    if(el) el.classList.add("active");
-    var favs=getFavorites();
-    setSectionLabel("Saved Favorites", favs.length);
-    var gallery=document.getElementById("gallery");
-    gallery.innerHTML="";
-    if(favs.length===0){
-      gallery.innerHTML='<div class="empty-state"><div class="empty-icon">❤️</div><h3>No saved wallpapers</h3><p>Tap the heart on any wallpaper to save it here.</p></div>';
-      return;
-    }
-    favs.forEach(function(file){
-      if(premiumSet.has(file)){ gallery.innerHTML+=buildPremiumCard(file); }
-      else {
-        var found=wallpapers.find(function(w){ return w.file===file; });
-        if(found) gallery.innerHTML+=buildFreeCard(found);
-      }
-    });
-  }
-
-  /* ── VIEWER ── */
-  function openImg(file){
-    currentImgList = freeWallpapers;
-    currentIndex = freeWallpapers.findIndex(function(w){ return w.file===file; });
-    updateViewer();
-    document.getElementById("viewer").classList.add("open");
-    document.body.style.overflow="hidden";
-  }
-
-  function updateViewer(){
-    var file = currentImgList[currentIndex].file;
-    document.getElementById("viewerImg").src = file;
-    document.getElementById("downloadBtn").href = file;
-    document.getElementById("viewerCounter").textContent = (currentIndex+1) + " / " + currentImgList.length;
-    updateFavoriteButton();
-  }
-
-  function closeViewer(){
-    document.getElementById("viewer").classList.remove("open");
-    document.body.style.overflow="";
-  }
-
-  function nextImage(){ currentIndex=(currentIndex+1)%currentImgList.length; updateViewer(); }
-  function prevImage(){ currentIndex=(currentIndex-1+currentImgList.length)%currentImgList.length; updateViewer(); }
-
-  function toggleFavorite(){
-    var file=currentImgList[currentIndex].file;
-    var favs=getFavorites();
-    if(favs.includes(file)){ favs=favs.filter(function(f){ return f!==file; }); }
-    else { favs.push(file); }
-    saveFavorites(favs);
-    updateFavoriteButton();
-  }
-
-  function updateFavoriteButton(){
-    var file=currentImgList[currentIndex].file;
-    var btn=document.getElementById("favBtn");
-    var isFav=getFavorites().includes(file);
-    btn.textContent = isFav ? "❤️ Saved" : "♡ Save";
-    btn.classList.toggle("active", isFav);
-  }
-
-  function toggleFavoriteFromCard(file,event){
-    event.stopPropagation();
-    var favs=getFavorites();
-    if(favs.includes(file)){ favs=favs.filter(function(f){ return f!==file; }); }
-    else { favs.push(file); }
-    saveFavorites(favs);
-    if(currentMode==="favorites") showFavorites(null);
-    else if(currentMode==="premium") showPremium(null);
-    else load(currentCat);
-  }
-
-  /* ── KEYBOARD & SWIPE ── */
-  document.addEventListener("keydown",function(e){
-    if(!document.getElementById("viewer").classList.contains("open")) return;
-    if(e.key==="ArrowRight") nextImage();
-    if(e.key==="ArrowLeft") prevImage();
-    if(e.key==="Escape") closeViewer();
+function showFavorites(el){
+  currentMode='favorites'; clearActive(); if(el)el.classList.add('active');
+  document.getElementById('pagination').innerHTML='';
+  var favs=getFavs();
+  setLabel('Saved Favorites',favs.length);
+  var g=document.getElementById('gallery'); g.innerHTML='';
+  if(!favs.length){ g.innerHTML='<div class="empty-state"><div class="empty-icon">❤️</div><h3>No saved wallpapers</h3><p>Tap ♡ on any wallpaper.</p></div>'; return; }
+  favs.forEach(function(f){
+    if(premiumSet.has(f)){g.innerHTML+=premCard(f);}
+    else{var w=wallpapers.find(function(x){return x.file===f;}); if(w)g.innerHTML+=freeCard(w);}
   });
+}
 
-  // click backdrop to close
-  document.getElementById("viewer").addEventListener("click",function(e){ if(e.target===this) closeViewer(); });
+function toggleFav(file,e){
+  e.stopPropagation();
+  var favs=getFavs();
+  if(favs.includes(file)) favs=favs.filter(function(f){return f!==file;});
+  else favs.push(file);
+  setFavs(favs);
+  if(currentMode==='favorites') showFavorites(null);
+  else if(currentMode==='premium') showPremium(null);
+  else load(currentCat);
+}
 
-  // touch swipe for viewer
-  var touchStartX=0;
-  document.getElementById("viewer").addEventListener("touchstart",function(e){ touchStartX=e.touches[0].clientX; },{passive:true});
-  document.getElementById("viewer").addEventListener("touchend",function(e){
-    var diff=touchStartX-e.changedTouches[0].clientX;
-    if(Math.abs(diff)>50){ if(diff>0) nextImage(); else prevImage(); }
-  });
+/* ── VIEWER ── */
+var vList=[], vIdx=0;
 
-  /* ── GLOBAL PREMIUM RIGHT-CLICK BLOCK ── */
-  document.addEventListener("contextmenu",function(e){
-    if(currentMode==="premium"){ e.preventDefault(); return false; }
-  });
+function openViewer(file){
+  vList = freeList;
+  vIdx  = freeList.findIndex(function(w){return w.file===file;});
+  renderViewer();
+  document.getElementById('viewer').style.display='flex';
+  document.body.style.overflow='hidden';
+}
 
-  /* ── INIT ── */
-  load("all");
+function renderViewer(){
+  var file=vList[vIdx].file;
+  document.getElementById('viewerImg').src=file;
+  document.getElementById('vDl').href=file;
+  document.getElementById('v-counter').textContent=(vIdx+1)+' / '+vList.length;
+  var favs=getFavs();
+  var fb=document.getElementById('vFav');
+  if(favs.includes(file)){ fb.textContent='❤️ Saved'; fb.classList.add('on'); }
+  else { fb.textContent='♡ Save'; fb.classList.remove('on'); }
+}
+
+function closeViewer(){
+  document.getElementById('viewer').style.display='none';
+  document.body.style.overflow='';
+}
+
+document.getElementById('vClose').onclick = closeViewer;
+document.getElementById('vPrev').onclick  = function(){ vIdx=(vIdx-1+vList.length)%vList.length; renderViewer(); };
+document.getElementById('vNext').onclick  = function(){ vIdx=(vIdx+1)%vList.length; renderViewer(); };
+document.getElementById('vFav').onclick   = function(){
+  var file=vList[vIdx].file;
+  var favs=getFavs();
+  if(favs.includes(file)) favs=favs.filter(function(f){return f!==file;});
+  else favs.push(file);
+  setFavs(favs); renderViewer();
+};
+
+/* click outside image closes viewer */
+document.getElementById('viewer').addEventListener('click',function(e){
+  if(e.target===this) closeViewer();
+});
+
+/* keyboard */
+document.addEventListener('keydown',function(e){
+  if(document.getElementById('viewer').style.display!=='flex') return;
+  if(e.key==='ArrowRight') document.getElementById('vNext').click();
+  if(e.key==='ArrowLeft')  document.getElementById('vPrev').click();
+  if(e.key==='Escape')     closeViewer();
+});
+
+/* swipe */
+var tx=0;
+document.getElementById('viewer').addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});
+document.getElementById('viewer').addEventListener('touchend',function(e){
+  var d=tx-e.changedTouches[0].clientX;
+  if(Math.abs(d)>50){ if(d>0)document.getElementById('vNext').click(); else document.getElementById('vPrev').click(); }
+});
+
+/* block right-click in premium mode */
+document.addEventListener('contextmenu',function(e){
+  if(currentMode==='premium'){e.preventDefault();return false;}
+});
+
+/* INIT */
+load('all');
 </script>
 </body>
 </html>
